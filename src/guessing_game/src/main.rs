@@ -1,5 +1,6 @@
 extern crate rand;
 use std::io;
+use std::io::Write;
 use rand::Rng;
 use std::cmp::Ordering;
 fn main() {
@@ -7,7 +8,8 @@ fn main() {
     println!("Secret number is {}", secret_number);
 
     loop {
-        println!("1〜100までの値を入力してください: ");
+        print!("1〜100までの値を入力してください: ");
+        io::stdout().flush().unwrap(); 
         let mut guess = String::new();
         io::stdin().read_line(&mut guess)
             .expect("入力エラー。read_line()で失敗しました。");
